@@ -35,6 +35,10 @@ class PassGene:
         
         self.Creator_lbl = Label(self.master, text="CODE BY: Qamar Imam", font=('', 10, 'bold'), bg='#37B884', fg='#F93016')
         self.Creator_lbl.place(x=340, y=280)
+        
+        self.save_var = IntVar()
+        self.Save_Chec = Checkbutton(self.master, text="Save Password", bg='#37B884', variable=self.save_var)
+        self.Save_Chec.place(x=10, y=260, width=100)
 
 
     def generator(self):
@@ -58,8 +62,10 @@ class PassGene:
         for i in range(len(raw_lst)):
             if raw_lst[i] != '':
                 raw_var += raw_lst[i]
+        
+        if self.save_var.get() == 1:
+            self.update(raw_var)
 
-        self.update(raw_var)
         self.Show_lbl.config(text=raw_var)
 
 
